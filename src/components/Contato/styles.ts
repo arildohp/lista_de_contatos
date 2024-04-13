@@ -19,17 +19,21 @@ export const Tag = styled.span`
   font-size: 10px;
   background-color: #e1a32a;
   border-radius: 8px;
-  margin-rifht: 16px;
+  margin-right: 16px;
+  margin-bottom: 16px;
   display: inline-block;
 `
-export const Descricao = styled.textarea`
+export const Descricao = styled.form`
+  padding: 8px;
+`
+export const Contato = styled.input`
   color: #8b8b8b;
   font-size: 14px;
   line-height: 24px;
   display: block;
   width: 100%;
-  margin-bottom: 16px;
-  margin-top: 16px;
+  margin-bottom: 8px;
+  margin-top: 8px;
   resize: none;
   border: none;
   background-color: transparent;
