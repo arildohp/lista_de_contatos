@@ -1,13 +1,15 @@
 import { useState } from 'react'
+import { useDispatch } from 'react-redux'
+
 import * as S from './styles'
-import * as enums from '../../utils/enums/Contato'
 
-type Props = {
-  nome: string
-  categoria: string
-}
+import { remover } from '../../store/reducers/contatos'
+import ContatoClass from '../../models/Contato'
 
-const Contato = ({ nome, categoria }: Props) => {
+type Props = ContatoClass
+
+const Contato = ({ nome, categoria, id }: Props) => {
+  const dispatch = useDispatch()
   const [estaEditando, setEstaEditando] = useState(false)
 
   return (
@@ -32,7 +34,9 @@ const Contato = ({ nome, categoria }: Props) => {
         ) : (
           <>
             <S.Botao onClick={() => setEstaEditando(true)}>Editar</S.Botao>
-            <S.BotaoCancelarRemover>Remover</S.BotaoCancelarRemover>
+            <S.BotaoCancelarRemover onClick={() => dispatch(remover(id))}>
+              Remover
+            </S.BotaoCancelarRemover>
           </>
         )}
       </S.BarraAcoes>
