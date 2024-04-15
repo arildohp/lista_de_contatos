@@ -15,13 +15,13 @@ const initialState: ContatosState = {
     },
     {
       id: 2,
-      contato: 'kauan pereira',
+      contato: 'Kauan pereira',
       nome: ' Kauan pereira',
       categoria: 'trabalho'
     },
     {
       id: 3,
-      contato: 'arlon solza',
+      contato: 'Arlon solza',
       nome: ' Arlon solza',
       categoria: 'amigos'
     }
