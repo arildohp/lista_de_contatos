@@ -9,16 +9,19 @@ const initialState: ContatosState = {
   itens: [
     {
       id: 1,
+      contato: 'valeria pereira',
       nome: ' Valeria pereira',
       categoria: 'familia'
     },
     {
       id: 2,
+      contato: 'kauan pereira',
       nome: ' Kauan pereira',
       categoria: 'trabalho'
     },
     {
       id: 3,
+      contato: 'arlon solza',
       nome: ' Arlon solza',
       categoria: 'amigos'
     }

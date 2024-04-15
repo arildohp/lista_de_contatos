@@ -8,15 +8,19 @@ import ContatoClass from '../../models/Contato'
 
 type Props = ContatoClass
 
-const Contato = ({ nome, categoria, id }: Props) => {
+const Contato = ({ contato: contatoOriginal, nome, categoria, id }: Props) => {
   const dispatch = useDispatch()
   const [estaEditando, setEstaEditando] = useState(false)
+  const [contato, setContato] = useState('')
 
   return (
     <S.Card>
       <S.Titulo>{nome}</S.Titulo>
       <S.Tag categoria={categoria}>{categoria}</S.Tag>
-      <S.Descricao />
+      <S.Descricao
+        value={contato}
+        onChange={(evento) => setContato(evento.target.value)}
+      />
       <label>Nome</label>
       <S.Contato type="text" placeholder="Nome Completo" required />
       <label>Email</label>
