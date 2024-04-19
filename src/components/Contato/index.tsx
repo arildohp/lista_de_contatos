@@ -17,7 +17,6 @@ const Contato = ({
 }: Props) => {
   const dispatch = useDispatch()
   const [estaEditando, setEstaEditando] = useState(false)
-  const [contato, setContato] = useState('')
   const [nome, setNome] = useState('')
   const [nContato, setNContato] = useState('')
   const [email, setEmail] = useState('')
@@ -29,8 +28,8 @@ const Contato = ({
   }, [nomeOriginal])
 
   useEffect(() => {
-    if (nContatoOriginal > 0) {
-      setNContato('')
+    if (nContatoOriginal.length > 0) {
+      setNContato(nContatoOriginal)
     }
   }, [nContatoOriginal])
 
@@ -56,7 +55,7 @@ const Contato = ({
       <label>Email</label>
       <S.Contato
         value={email}
-        onChange={(evento) => setNContato(evento.target.value)}
+        onChange={(evento) => setEmail(evento.target.value)}
         type="email"
         placeholder="exemplo@exemplo.com"
         required
@@ -64,7 +63,7 @@ const Contato = ({
       <label>Telefone</label>
       <S.Contato
         value={nContato}
-        onChange={(evento) => setEmail(evento.target.value)}
+        onChange={(evento) => setNContato(evento.target.value)}
         type="tel"
         placeholder="(XX) XXXXX-XXXX"
         required
