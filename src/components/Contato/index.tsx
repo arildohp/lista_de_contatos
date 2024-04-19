@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 
 import * as S from './styles'
@@ -8,7 +8,14 @@ import ContatoClass from '../../models/Contato'
 
 type Props = ContatoClass
 
-const Contato = ({ contato: contatoOriginal, nome, categoria, id }: Props) => {
+const Contato = ({
+  contato: contatoOriginal,
+  nome,
+  categoria,
+  id,
+  nContato,
+  email
+}: Props) => {
   const dispatch = useDispatch()
   const [estaEditando, setEstaEditando] = useState(false)
   const [contato, setContato] = useState('')
@@ -17,16 +24,31 @@ const Contato = ({ contato: contatoOriginal, nome, categoria, id }: Props) => {
     <S.Card>
       <S.Titulo>{nome}</S.Titulo>
       <S.Tag categoria={categoria}>{categoria}</S.Tag>
-      <S.Descricao
-        value={contato}
-        onChange={(evento) => setContato(evento.target.value)}
-      />
+      <S.Descricao />
       <label>Nome</label>
-      <S.Contato type="text" placeholder="Nome Completo" required />
+      <S.Contato
+        value={nome}
+        onChange={(evento) => setContato(evento.target.value)}
+        type="text"
+        placeholder="Nome Completo"
+        required
+      />
       <label>Email</label>
-      <S.Contato type="email" placeholder="exemplo@exemplo.com" required />
+      <S.Contato
+        value={email}
+        onChange={(evento) => setContato(evento.target.value)}
+        type="email"
+        placeholder="exemplo@exemplo.com"
+        required
+      />
       <label>Telefone</label>
-      <S.Contato type="tel" placeholder="(XX) XXXXX-XXXX" required />
+      <S.Contato
+        value={nContato}
+        onChange={(evento) => setContato(evento.target.value)}
+        type="tel"
+        placeholder="(XX) XXXXX-XXXX"
+        required
+      />
       <S.BarraAcoes>
         {estaEditando ? (
           <>

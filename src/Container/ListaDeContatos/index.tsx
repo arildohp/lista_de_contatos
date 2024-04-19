@@ -16,8 +16,10 @@ const ListaDeContatos = () => {
             <Contato
               id={c.id}
               contato={c.contato}
+              nContato={c.nContato}
               categoria={c.categoria}
               nome={c.nome}
+              email={c.email}
             />
           </li>
         ))}
