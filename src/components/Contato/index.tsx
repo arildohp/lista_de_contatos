@@ -9,16 +9,36 @@ import ContatoClass from '../../models/Contato'
 type Props = ContatoClass
 
 const Contato = ({
-  contato: contatoOriginal,
-  nome,
+  nome: nomeOriginal,
   categoria,
   id,
-  nContato,
-  email
+  nContato: nContatoOriginal,
+  email: emailOriginal
 }: Props) => {
   const dispatch = useDispatch()
   const [estaEditando, setEstaEditando] = useState(false)
   const [contato, setContato] = useState('')
+  const [nome, setNome] = useState('')
+  const [nContato, setNContato] = useState('')
+  const [email, setEmail] = useState('')
+
+  useEffect(() => {
+    if (nomeOriginal.length > 0) {
+      setNome(nomeOriginal)
+    }
+  }, [nomeOriginal])
+
+  useEffect(() => {
+    if (nContatoOriginal > 0) {
+      setNContato('')
+    }
+  }, [nContatoOriginal])
+
+  useEffect(() => {
+    if (emailOriginal.length > 0) {
+      setEmail(emailOriginal)
+    }
+  }, [emailOriginal])
 
   return (
     <S.Card>
@@ -28,7 +48,7 @@ const Contato = ({
       <label>Nome</label>
       <S.Contato
         value={nome}
-        onChange={(evento) => setContato(evento.target.value)}
+        onChange={(evento) => setNome(evento.target.value)}
         type="text"
         placeholder="Nome Completo"
         required
@@ -36,7 +56,7 @@ const Contato = ({
       <label>Email</label>
       <S.Contato
         value={email}
-        onChange={(evento) => setContato(evento.target.value)}
+        onChange={(evento) => setNContato(evento.target.value)}
         type="email"
         placeholder="exemplo@exemplo.com"
         required
@@ -44,7 +64,7 @@ const Contato = ({
       <label>Telefone</label>
       <S.Contato
         value={nContato}
-        onChange={(evento) => setContato(evento.target.value)}
+        onChange={(evento) => setEmail(evento.target.value)}
         type="tel"
         placeholder="(XX) XXXXX-XXXX"
         required
