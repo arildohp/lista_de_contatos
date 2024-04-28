@@ -9,25 +9,25 @@ const initialState: ContatosState = {
   itens: [
     {
       id: 1,
-      contato: 'valeria pereira',
+      nomeContato: 'valeria pereira',
       nome: ' Valeria pereira',
-      nContato: 35999947892,
+      nContato: '35999947892',
       email: 'arildohp@gmail.com',
       categoria: 'familia'
     },
     {
       id: 2,
-      contato: 'Kauan pereira',
+      nomeContato: 'Kauan pereira',
       nome: ' Kauan pereira',
-      nContato: 35999947892,
+      nContato: '35999947892',
       categoria: 'trabalho',
       email: 'kauan@gmail.com'
     },
     {
       id: 3,
-      contato: 'Arlon solza',
+      nomeContato: 'Arlon solza',
       nome: ' Arlon solza',
-      nContato: 35999578923,
+      nContato: '35999578923',
       email: 'arlon@gmail.com',
       categoria: 'amigos'
     }

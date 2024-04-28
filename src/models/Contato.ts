@@ -1,20 +1,20 @@
 class Contato {
-  contato: string
+  nomeContato: string
   nome: string
   categoria: string
   id: number
-  nContato: number
+  nContato: string
   email: string
 
   constructor(
-    contato: string,
-    nContato: number,
+    nomeContato: string,
+    nContato: string,
     nome: string,
     categoria: string,
     id: number,
     email: string
   ) {
-    this.contato = contato
+    this.nomeContato = nomeContato
     this.nContato = nContato
     this.nome = nome
     this.categoria = categoria

@@ -22,7 +22,7 @@ export const Card = styled.div`
   border-radius: 16px;
 `
 export const Titulo = styled.h3`
-  font-size: 18px;
+  font-size: 30px;
   font-weight: bold;
   margin-bottom: 16px;
 `

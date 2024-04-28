@@ -9,6 +9,7 @@ import ContatoClass from '../../models/Contato'
 type Props = ContatoClass
 
 const Contato = ({
+  nomeContato: nomeContatoOriginal,
   nome: nomeOriginal,
   categoria,
   id,
@@ -17,6 +18,7 @@ const Contato = ({
 }: Props) => {
   const dispatch = useDispatch()
   const [estaEditando, setEstaEditando] = useState(false)
+  const [nomeContato, setNomeContato] = useState('')
   const [nome, setNome] = useState('')
   const [nContato, setNContato] = useState('')
   const [email, setEmail] = useState('')
@@ -26,6 +28,12 @@ const Contato = ({
       setNome(nomeOriginal)
     }
   }, [nomeOriginal])
+
+  useEffect(() => {
+    if (nomeContatoOriginal.length > 0) {
+      setNomeContato(nomeContatoOriginal)
+    }
+  }, [nomeContatoOriginal])
 
   useEffect(() => {
     if (nContatoOriginal.length > 0) {
@@ -41,7 +49,7 @@ const Contato = ({
 
   return (
     <S.Card>
-      <S.Titulo>{nome}</S.Titulo>
+      <S.Titulo>{nomeContato}</S.Titulo>
       <S.Tag categoria={categoria}>{categoria}</S.Tag>
       <S.Descricao />
       <label>Nome</label>
