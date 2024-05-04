@@ -9,7 +9,6 @@ import ContatoClass from '../../models/Contato'
 type Props = ContatoClass
 
 const Contato = ({
-  nomeContato: nomeContatoOriginal,
   nome: nomeOriginal,
   categoria,
   id,
@@ -18,7 +17,6 @@ const Contato = ({
 }: Props) => {
   const dispatch = useDispatch()
   const [estaEditando, setEstaEditando] = useState(false)
-  const [nomeContato, setNomeContato] = useState('')
   const [nome, setNome] = useState('')
   const [nContato, setNContato] = useState('')
   const [email, setEmail] = useState('')
@@ -28,12 +26,6 @@ const Contato = ({
       setNome(nomeOriginal)
     }
   }, [nomeOriginal])
-
-  useEffect(() => {
-    if (nomeContatoOriginal.length > 0) {
-      setNomeContato(nomeContatoOriginal)
-    }
-  }, [nomeContatoOriginal])
 
   useEffect(() => {
     if (nContatoOriginal.length > 0) {
@@ -47,13 +39,21 @@ const Contato = ({
     }
   }, [emailOriginal])
 
+  function cancelarEdiçao() {
+    setEstaEditando(false)
+    setNome(nomeOriginal)
+    setEmail(emailOriginal)
+    setNContato(nContatoOriginal)
+  }
+
   return (
     <S.Card>
-      <S.Titulo>{nomeContato}</S.Titulo>
+      <S.Titulo>{nome}</S.Titulo>
       <S.Tag categoria={categoria}>{categoria}</S.Tag>
       <S.Descricao />
       <label>Nome</label>
       <S.Contato
+        disabled={!estaEditando}
         value={nome}
         onChange={(evento) => setNome(evento.target.value)}
         type="text"
@@ -62,6 +62,7 @@ const Contato = ({
       />
       <label>Email</label>
       <S.Contato
+        disabled={!estaEditando}
         value={email}
         onChange={(evento) => setEmail(evento.target.value)}
         type="email"
@@ -70,6 +71,7 @@ const Contato = ({
       />
       <label>Telefone</label>
       <S.Contato
+        disabled={!estaEditando}
         value={nContato}
         onChange={(evento) => setNContato(evento.target.value)}
         type="tel"
@@ -80,7 +82,7 @@ const Contato = ({
         {estaEditando ? (
           <>
             <S.BotaoSalvar>Salvar</S.BotaoSalvar>
-            <S.BotaoCancelarRemover onClick={() => setEstaEditando(false)}>
+            <S.BotaoCancelarRemover onClick={cancelarEdiçao}>
               Cancelar
             </S.BotaoCancelarRemover>
           </>

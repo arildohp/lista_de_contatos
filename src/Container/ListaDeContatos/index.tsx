@@ -12,10 +12,9 @@ const ListaDeContatos = () => {
       <p>Lista de contatos</p>
       <ul>
         {itens.map((c) => (
-          <li key={c.nomeContato}>
+          <li key={c.nome}>
             <Contato
               id={c.id}
-              nomeContato={c.nomeContato}
               nContato={c.nContato}
               categoria={c.categoria}
               nome={c.nome}

@@ -9,7 +9,6 @@ const initialState: ContatosState = {
   itens: [
     {
       id: 1,
-      nomeContato: 'valeria pereira',
       nome: ' Valeria pereira',
       nContato: '35999947892',
       email: 'arildohp@gmail.com',
@@ -17,7 +16,6 @@ const initialState: ContatosState = {
     },
     {
       id: 2,
-      nomeContato: 'Kauan pereira',
       nome: ' Kauan pereira',
       nContato: '35999947892',
       categoria: 'trabalho',
@@ -25,7 +23,6 @@ const initialState: ContatosState = {
     },
     {
       id: 3,
-      nomeContato: 'Arlon solza',
       nome: ' Arlon solza',
       nContato: '35999578923',
       email: 'arlon@gmail.com',
