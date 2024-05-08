@@ -48,6 +48,18 @@ const contatosSlice = createSlice({
       if (indexDoContato >= 0) {
         state.itens[indexDoContato] = action.payload
       }
+    },
+    cadastrar: (state, action: PayloadAction<Contato>) => {
+      const contatoJaExiste = state.itens.find(
+        (contato) =>
+          contato.nome.toLowerCase() === action.payload.nome.toLowerCase()
+      )
+
+      if (contatoJaExiste) {
+        alert('já existe um contato com este nome')
+      } else {
+        state.itens.push(action.payload)
+      }
     }
   }
 })
