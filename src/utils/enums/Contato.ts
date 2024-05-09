@@ -1,3 +1,5 @@
-export enum Contato {
-  CATEGORIA = 'categoria'
+export enum Categoria {
+  FAMILIA = 'familia',
+  AMIGOS = 'amigos',
+  TRABALHO = 'trabalho'
 }

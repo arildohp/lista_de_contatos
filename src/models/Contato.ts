@@ -1,6 +1,8 @@
-class Contato {
+import * as enums from '../../src/utils/enums/Contato'
+
+class Contatos {
   nome: string
-  categoria: string
+  categoria: enums.Categoria
   id: number
   nContato: string
   email: string
@@ -8,7 +10,7 @@ class Contato {
   constructor(
     nContato: string,
     nome: string,
-    categoria: string,
+    categoria: enums.Categoria,
     id: number,
     email: string
   ) {
@@ -19,4 +21,4 @@ class Contato {
     this.email = email
   }
 }
-export default Contato
+export default Contatos

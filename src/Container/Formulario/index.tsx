@@ -1,23 +1,40 @@
-import { useState } from 'react'
+import { FormEvent, useState } from 'react'
 import { useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 
 import { BotaoSalvar, MainContainer, Titulo } from '../../styles'
-import { Form, Contato, SCampo } from './styles'
-import { label } from '../../components/FiltroCard/styles'
+import { Form, Contato, SCampo, Opcoes } from './styles'
+import * as enums from '../../utils/enums/Contato'
+import Contatos from '../../models/Contato'
+import { cadastrar } from '../../store/reducers/contatos'
 
 const Formulario = () => {
   const dispatch = useDispatch()
+  const navigate = useNavigate()
+
   const [nome, setNome] = useState('')
   const [email, setEmail] = useState('')
   const [nContato, setNContato] = useState('')
-  const [familia, setFamilia] = useState('')
-  const [amigos, setAmigos] = useState('')
-  const [trabalho, setTrabalho] = useState('')
+  const [categoria, setCategoria] = useState(enums.Categoria.FAMILIA)
+
+  const cadastrarContato = (evento: FormEvent) => {
+    evento.preventDefault()
+    const contatoParaAdicionar = new Contatos(
+      email,
+      nContato,
+      categoria,
+      3,
+      nome
+    )
+
+    dispatch(cadastrar(contatoParaAdicionar))
+    navigate('/')
+  }
 
   return (
     <MainContainer>
       <Titulo>Novo contato</Titulo>
-      <Form>
+      <Form onSubmit={cadastrarContato}>
         <SCampo
           value={nome}
           onChange={({ target }) => setNome(target.value)}
@@ -39,33 +56,22 @@ const Formulario = () => {
           placeholder="Numero"
         />
         <Contato>
-          <input
-            value={familia}
-            onChange={({ target }) => setFamilia(target.value)}
-            name="contato"
-            type="radio"
-            id="familia"
-          />{' '}
-          {''}
-          <label htmlFor="familia">familia</label>
-          <input
-            value={amigos}
-            onChange={({ target }) => setAmigos(target.value)}
-            name="contato"
-            type="radio"
-            id="amigos"
-          />{' '}
-          {''}
-          <label htmlFor="amigos">amigos</label>
-          <input
-            value={trabalho}
-            onChange={({ target }) => setTrabalho(target.value)}
-            name="contato"
-            type="radio"
-            id="trabalho"
-          />{' '}
-          {''}
-          <label htmlFor="trabalho">trabalho</label>
+          {Object.values(enums.Categoria).map((categoria) => (
+            <Opcoes key={categoria}>
+              <input
+                value={categoria}
+                name="categoria"
+                type="radio"
+                onChange={(evento) =>
+                  setCategoria(evento.target.value as enums.Categoria)
+                }
+                id={categoria}
+                defaultChecked={categoria === enums.Categoria.FAMILIA}
+              />
+              {''}
+              <label htmlFor={categoria}>{categoria}</label>
+            </Opcoes>
+          ))}
         </Contato>
         <BotaoSalvar type="submit">Cadastrar</BotaoSalvar>
       </Form>

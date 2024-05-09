@@ -11,7 +11,7 @@ export const Contato = styled.div`
   margin: 16px 0;
 
   label {
-    margin-right: 6px;
+    margin: 6px;
   }
 `
 export const SCampo = styled.input`
@@ -22,4 +22,9 @@ export const SCampo = styled.input`
   border-color: #666666;
   width: 100%;
   margin-top: 10px;
+`
+
+export const Opcoes = styled.div`
+  display: inline;
+  text-transform: capitalize;
 `
