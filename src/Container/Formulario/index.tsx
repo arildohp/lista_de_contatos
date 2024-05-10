@@ -35,25 +35,28 @@ const Formulario = () => {
     <MainContainer>
       <Titulo>Novo contato</Titulo>
       <Form onSubmit={cadastrarContato}>
+        <h3>Nome</h3>
         <SCampo
           value={nome}
           onChange={({ target }) => setNome(target.value)}
           type="text"
           placeholder="Nome completo"
         />
+        <h3>Email</h3>
         <SCampo
           value={email}
           onChange={({ target }) => setEmail(target.value)}
           as="input"
           type="email"
-          placeholder="Email"
+          placeholder="exemplo@exemplo.com"
         />
+        <h3>Telefone</h3>
         <SCampo
           value={nContato}
           onChange={({ target }) => setNContato(target.value)}
           as="input"
-          type="number"
-          placeholder="Numero"
+          type="tel"
+          placeholder="(XX) XXXXX-XXXX"
         />
         <Contato>
           {Object.values(enums.Categoria).map((categoria) => (
