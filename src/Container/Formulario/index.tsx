@@ -5,7 +5,6 @@ import { useNavigate } from 'react-router-dom'
 import { BotaoSalvar, MainContainer, Titulo } from '../../styles'
 import { Form, Contato, SCampo, Opcoes } from './styles'
 import * as enums from '../../utils/enums/Contato'
-import Contatos from '../../models/Contato'
 import { cadastrar } from '../../store/reducers/contatos'
 
 const Formulario = () => {
@@ -19,15 +18,15 @@ const Formulario = () => {
 
   const cadastrarContato = (evento: FormEvent) => {
     evento.preventDefault()
-    const contatoParaAdicionar = new Contatos(
-      email,
-      nContato,
-      categoria,
-      3,
-      nome
-    )
 
-    dispatch(cadastrar(contatoParaAdicionar))
+    dispatch(
+      cadastrar({
+        nContato,
+        nome,
+        categoria,
+        email
+      })
+    )
     navigate('/')
   }
 
