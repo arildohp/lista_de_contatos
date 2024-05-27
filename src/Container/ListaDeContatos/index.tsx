@@ -11,6 +11,7 @@ const ListaDeContatos = () => {
 
   const filtraContatos = () => {
     if (criterio !== undefined) {
+      if (criterio == 'todos') return itens
       return itens.filter(
         (item) =>
           item.categoria.toLowerCase().search(criterio.toLowerCase()) >= 0
